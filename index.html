@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gran Caos - Torneo Total War Warhammer 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚔️ EL GRAN CAOS ⚔️</h1>
+            <p class="subtitle">TORNEO TOTAL WAR WARHAMMER 3</p>
+        </header>
+
+        <main>
+            <!-- Versus Container -->
+            <div class="versus-container-main">
+                <!-- Jugador 1 -->
+                <div class="player-side">
+                    <div class="player-select-container">
+                        <label for="activePlayer1Select">Jugador 1:</label>
+                        <select id="activePlayer1Select" class="player-select">
+                            <option value="">Selecciona un jugador...</option>
+                        </select>
+                    </div>
+
+                    <div id="armyOwner1Section" class="wheel-section hidden">
+                        <h3>Propietario del Ejército</h3>
+                        <div class="wheel-container">
+                            <div class="wheel-pointer"></div>
+                            <canvas id="armyOwner1Wheel" width="500" height="500"></canvas>
+                        </div>
+                        <button id="spinArmyOwner1Btn" class="spin-btn">Girar Ruleta</button>
+                        <div id="selectedArmyOwner1" class="result"></div>
+                    </div>
+
+                    <div id="faction1Section" class="wheel-section hidden">
+                        <h3>Facción</h3>
+                        <div class="wheel-container">
+                            <div class="wheel-pointer"></div>
+                            <canvas id="faction1Wheel" width="500" height="500"></canvas>
+                        </div>
+                        <button id="spinFaction1Btn" class="spin-btn">Girar Ruleta</button>
+                        <div id="selectedFaction1" class="result"></div>
+                    </div>
+
+                    <div id="army1Section" class="army-display hidden">
+                        <h4 id="army1ActivePlayer"></h4>
+                        <h5 id="army1Owner"></h5>
+                        <a id="army1Link" href="" target="_blank" class="army-image-link">
+                            <img id="army1Image" src="" alt="Ejército 1">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="versus-divider">VS</div>
+
+                <!-- Jugador 2 -->
+                <div class="player-side">
+                    <div class="player-select-container">
+                        <label for="activePlayer2Select">Jugador 2:</label>
+                        <select id="activePlayer2Select" class="player-select">
+                            <option value="">Selecciona un jugador...</option>
+                        </select>
+                    </div>
+
+                    <div id="armyOwner2Section" class="wheel-section hidden">
+                        <h3>Propietario del Ejército</h3>
+                        <div class="wheel-container">
+                            <div class="wheel-pointer"></div>
+                            <canvas id="armyOwner2Wheel" width="500" height="500"></canvas>
+                        </div>
+                        <button id="spinArmyOwner2Btn" class="spin-btn">Girar Ruleta</button>
+                        <div id="selectedArmyOwner2" class="result"></div>
+                    </div>
+
+                    <div id="faction2Section" class="wheel-section hidden">
+                        <h3>Facción</h3>
+                        <div class="wheel-container">
+                            <div class="wheel-pointer"></div>
+                            <canvas id="faction2Wheel" width="500" height="500"></canvas>
+                        </div>
+                        <button id="spinFaction2Btn" class="spin-btn">Girar Ruleta</button>
+                        <div id="selectedFaction2" class="result"></div>
+                    </div>
+
+                    <div id="army2Section" class="army-display hidden">
+                        <h4 id="army2ActivePlayer"></h4>
+                        <h5 id="army2Owner"></h5>
+                        <a id="army2Link" href="" target="_blank" class="army-image-link">
+                            <img id="army2Image" src="" alt="Ejército 2">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-match-container">
+                <button id="newMatchBtn" class="spin-btn">Nueva Partida</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
