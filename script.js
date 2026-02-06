@@ -71,6 +71,14 @@ const players = {
             "Kislev": "assets/PlayerArmies/RoyerKislev.jpg",
             "Demonios del Caos": "assets/PlayerArmies/RoyerChaosDemons.jpg"
         }
+    },
+    "Fraan": {
+        factions: ["Guerreros del Caos", "Bretonia", "Costa del Vampiro"],
+        images: {
+            "Guerreros del Caos": "assets/PlayerArmies/FraanGuerrerosDelCaos.jpg",
+            "Bretonia": "assets/PlayerArmies/FraanBretonia.jpg",
+            "Costa del Vampiro": "assets/PlayerArmies/FraanCostaDelVampiro.png"
+        }
     }
 };
 
