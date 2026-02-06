@@ -606,3 +606,67 @@ function updateCurrentWheels() {
         }
     }
 }
+
+// Función para detectar clic en la ruleta y abrir la imagen
+function handleWheelClick(canvas, compositions, event) {
+    if (isSpinning) return;
+    
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    
+    // Calcular distancia desde el centro
+    const dx = x - centerX;
+    const dy = y - centerY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const radius = canvas.width / 2 - 20;
+    
+    // Solo procesar clics dentro del círculo (excluyendo el centro)
+    if (distance < 30 || distance > radius) return;
+    
+    // Calcular ángulo del clic
+    let angle = Math.atan2(dy, dx);
+    if (angle < 0) angle += 2 * Math.PI;
+    
+    // Convertir el ángulo para que coincida con la orientación de la ruleta
+    // La ruleta empieza en la parte superior (90 grados)
+    angle = (angle - Math.PI / 2 + 2 * Math.PI) % (2 * Math.PI);
+    
+    // Calcular en qué sector se hizo clic
+    const anglePerItem = (2 * Math.PI) / compositions.length;
+    const clickedIndex = Math.floor(angle / anglePerItem) % compositions.length;
+    const clickedComposition = compositions[clickedIndex];
+    
+    // Abrir la imagen correspondiente
+    if (clickedComposition && clickedComposition.image) {
+        window.open(clickedComposition.image, '_blank');
+    }
+}
+
+// Agregar event listeners de clic a las ruletas de composiciones
+army1Canvas.addEventListener('click', (event) => {
+    if (activePlayer1 && !army1WheelSection.classList.contains('hidden')) {
+        const allBans = [...bans1, ...bans2].map(b => parseInt(b));
+        const availableComps = allCompositions.filter((_, index) => 
+            !allBans.includes(index) && !usedCompositions.includes(index)
+        );
+        handleWheelClick(army1Canvas, availableComps, event);
+    }
+});
+
+army2Canvas.addEventListener('click', (event) => {
+    if (activePlayer2 && !army2WheelSection.classList.contains('hidden')) {
+        const allBans = [...bans1, ...bans2].map(b => parseInt(b));
+        const availableComps = allCompositions.filter((_, index) => 
+            !allBans.includes(index) && !usedCompositions.includes(index)
+        );
+        handleWheelClick(army2Canvas, availableComps, event);
+    }
+});
+
+// Cambiar cursor a pointer cuando está sobre las ruletas
+army1Canvas.style.cursor = 'pointer';
+army2Canvas.style.cursor = 'pointer';
