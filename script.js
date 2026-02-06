@@ -63,6 +63,14 @@ const players = {
             "Nurgle": "assets/PlayerArmies/kaputoNurgle.jpg",
             "Enanos": "assets/PlayerArmies/KaputoEnanos.jpg"
         }
+    },
+    "Royer": {
+        factions: ["Khorne", "Kislev", "Demonios del Caos"],
+        images: {
+            "Khorne": "assets/PlayerArmies/Rogerkhorne.jpg",
+            "Kislev": "assets/PlayerArmies/RoyerKislev.jpg",
+            "Demonios del Caos": "assets/PlayerArmies/RoyerChaosDemons.jpg"
+        }
     }
 };
 
@@ -86,7 +94,9 @@ const factionIcons = {
     "Khorne": "assets/FactionIcons/Khorne.webp",
     "Bretonia": "assets/FactionIcons/Bretonia.webp",
     "Nurgle": "assets/FactionIcons/Nurgle.webp",
-    "Enanos": "assets/FactionIcons/Dwarfs.webp"
+    "Enanos": "assets/FactionIcons/Dwarfs.webp",
+    "Kislev": "assets/FactionIcons/Kislev.webp",
+    "Demonios del Caos": "assets/FactionIcons/DaemonsOfChaos.webp"
 };
 
 const playerNames = Object.keys(players);
