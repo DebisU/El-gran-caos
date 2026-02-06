@@ -13,8 +13,9 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 header {
@@ -274,11 +275,12 @@ canvas {
 }
 
 .versus-divider {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
     color: #ff6b6b;
     text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
     animation: pulse 2s infinite;
+    flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -296,15 +298,16 @@ canvas {
 
 .versus-container-main {
     display: flex;
-    gap: 60px;
+    gap: 80px;
     justify-content: center;
     align-items: flex-start;
     margin-bottom: 40px;
 }
 
 .player-side {
-    flex: 1;
-    max-width: 550px;
+    flex: 0 1 auto;
+    width: 600px;
+    min-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -317,6 +320,24 @@ canvas {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 600px;
+    min-width: 600px;
+    box-sizing: border-box;
+}
+
+#army1WheelSection,
+#army2WheelSection {
+    width: 600px;
+    min-width: 600px;
+    padding: 0;
+}
+
+#army1WheelSection canvas,
+#army2WheelSection canvas {
+    width: 600px !important;
+    height: 600px !important;
+    display: block;
+    margin: 0 auto;
 }
 
 .wheel-section h3 {
@@ -331,8 +352,56 @@ canvas {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 500px;
+    width: 600px;
+    min-width: 600px;
     box-sizing: border-box;
+}
+
+.bans-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 600px;
+    min-width: 600px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.bans-section h3 {
+    font-size: 1.3rem;
+    color: #ff6b6b;
+    margin-bottom: 15px;
+}
+
+.ban-selects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.ban-select {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ff6b6b;
+    background: rgba(26, 26, 46, 0.8);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.ban-select:hover {
+    border-color: #ffd700;
+    background: rgba(26, 26, 46, 0.95);
+}
+
+.ban-select option {
+    background: #1a1a2e;
+    color: #fff;
 }
 
 .player-select-container label {
@@ -381,6 +450,9 @@ canvas {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 600px;
+    min-width: 600px;
+    box-sizing: border-box;
 }
 
 .army-display h4 {
@@ -418,6 +490,103 @@ canvas {
 .new-match-container {
     text-align: center;
     margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Modal de listas usadas */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 1400px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.modal-content h2 {
+    color: #ffd700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    color: #ff6b6b;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #ffd700;
+}
+
+.used-lists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.used-list-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.used-list-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.used-list-item span {
+    color: #fff;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.remove-used-btn {
+    background: #ff6b6b;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.3s;
+}
+
+.remove-used-btn:hover {
+    background: #ff5252;
 }
 
 .army-section h2 {
@@ -448,6 +617,88 @@ canvas {
     border-radius: 10px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     border: 3px solid rgba(255, 215, 0, 0.3);
+}
+
+.used-list-item {
+    background: rgba(26, 26, 46, 0.7);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 107, 107, 0.6);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.used-list-item:hover {
+    border-color: rgba(255, 107, 107, 0.8);
+    transform: translateY(-2px);
+}
+
+.used-list-item.marked-available {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: rgba(76, 175, 80, 0.6);
+    opacity: 1;
+}
+
+.used-list-item.marked-available:hover {
+    border-color: rgba(76, 175, 80, 0.8);
+}
+
+.toggle-used-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #999;
+    background: rgba(150, 150, 150, 0.2);
+    color: #999;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.toggle-used-btn:hover {
+    background: rgba(150, 150, 150, 0.4);
+    transform: scale(1.1);
+}
+
+.marked-available .toggle-used-btn {
+    background: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+}
+
+.remove-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #ff6b6b;
+    background: rgba(255, 107, 107, 0.2);
+    color: #ff6b6b;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.remove-btn:hover {
+    background: #ff6b6b;
+    color: #fff;
+    transform: scale(1.1);
 }
 
 @media (max-width: 768px) {

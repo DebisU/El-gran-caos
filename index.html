@@ -25,29 +25,37 @@
                         </select>
                     </div>
 
-                    <div id="armyOwner1Section" class="wheel-section hidden">
-                        <h3>Propietario del Ejército</h3>
-                        <div class="wheel-container">
-                            <div class="wheel-pointer"></div>
-                            <canvas id="armyOwner1Wheel" width="500" height="500"></canvas>
+                    <!-- Bans Jugador 1 -->
+                    <div id="bans1Section" class="bans-section hidden">
+                        <h3>Banear Composiciones (3)</h3>
+                        <div class="ban-selects">
+                            <select id="ban1_1" class="ban-select">
+                                <option value="">Ban 1...</option>
+                            </select>
+                            <select id="ban1_2" class="ban-select">
+                                <option value="">Ban 2...</option>
+                            </select>
+                            <select id="ban1_3" class="ban-select">
+                                <option value="">Ban 3...</option>
+                            </select>
                         </div>
-                        <button id="spinArmyOwner1Btn" class="spin-btn">Girar Ruleta</button>
-                        <div id="selectedArmyOwner1" class="result"></div>
+                        <button id="confirmBans1Btn" class="spin-btn">Confirmar Bans</button>
                     </div>
 
-                    <div id="faction1Section" class="wheel-section hidden">
-                        <h3>Facción</h3>
+                    <!-- Ruleta de Ejércitos Jugador 1 -->
+                    <div id="army1WheelSection" class="wheel-section hidden">
+                        <h3>Ejército Aleatorio</h3>
                         <div class="wheel-container">
                             <div class="wheel-pointer"></div>
-                            <canvas id="faction1Wheel" width="500" height="500"></canvas>
+                            <canvas id="army1Wheel" width="600" height="600"></canvas>
                         </div>
-                        <button id="spinFaction1Btn" class="spin-btn">Girar Ruleta</button>
-                        <div id="selectedFaction1" class="result"></div>
+                        <button id="spinArmy1Btn" class="spin-btn">Girar Ruleta</button>
+                        <div id="selectedArmy1" class="result"></div>
                     </div>
 
                     <div id="army1Section" class="army-display hidden">
                         <h4 id="army1ActivePlayer"></h4>
-                        <h5 id="army1Owner"></h5>
+                        <h5 id="army1Composition"></h5>
                         <a id="army1Link" href="" target="_blank" class="army-image-link">
                             <img id="army1Image" src="" alt="Ejército 1">
                         </a>
@@ -65,29 +73,37 @@
                         </select>
                     </div>
 
-                    <div id="armyOwner2Section" class="wheel-section hidden">
-                        <h3>Propietario del Ejército</h3>
-                        <div class="wheel-container">
-                            <div class="wheel-pointer"></div>
-                            <canvas id="armyOwner2Wheel" width="500" height="500"></canvas>
+                    <!-- Bans Jugador 2 -->
+                    <div id="bans2Section" class="bans-section hidden">
+                        <h3>Banear Composiciones (3)</h3>
+                        <div class="ban-selects">
+                            <select id="ban2_1" class="ban-select">
+                                <option value="">Ban 1...</option>
+                            </select>
+                            <select id="ban2_2" class="ban-select">
+                                <option value="">Ban 2...</option>
+                            </select>
+                            <select id="ban2_3" class="ban-select">
+                                <option value="">Ban 3...</option>
+                            </select>
                         </div>
-                        <button id="spinArmyOwner2Btn" class="spin-btn">Girar Ruleta</button>
-                        <div id="selectedArmyOwner2" class="result"></div>
+                        <button id="confirmBans2Btn" class="spin-btn">Confirmar Bans</button>
                     </div>
 
-                    <div id="faction2Section" class="wheel-section hidden">
-                        <h3>Facción</h3>
+                    <!-- Ruleta de Ejércitos Jugador 2 -->
+                    <div id="army2WheelSection" class="wheel-section hidden">
+                        <h3>Ejército Aleatorio</h3>
                         <div class="wheel-container">
                             <div class="wheel-pointer"></div>
-                            <canvas id="faction2Wheel" width="500" height="500"></canvas>
+                            <canvas id="army2Wheel" width="600" height="600"></canvas>
                         </div>
-                        <button id="spinFaction2Btn" class="spin-btn">Girar Ruleta</button>
-                        <div id="selectedFaction2" class="result"></div>
+                        <button id="spinArmy2Btn" class="spin-btn">Girar Ruleta</button>
+                        <div id="selectedArmy2" class="result"></div>
                     </div>
 
                     <div id="army2Section" class="army-display hidden">
                         <h4 id="army2ActivePlayer"></h4>
-                        <h5 id="army2Owner"></h5>
+                        <h5 id="army2Composition"></h5>
                         <a id="army2Link" href="" target="_blank" class="army-image-link">
                             <img id="army2Image" src="" alt="Ejército 2">
                         </a>
@@ -97,8 +113,21 @@
 
             <div class="new-match-container">
                 <button id="newMatchBtn" class="spin-btn">Nueva Partida</button>
+                <button id="viewUsedBtn" class="spin-btn">Gestionar Listas</button>
             </div>
         </main>
+
+        <!-- Modal para mostrar listas usadas -->
+        <div id="usedListsModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Gestionar Listas</h2>
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <button id="clearUsedBtn" class="back-btn" style="display: inline-block;">Marcar Todas Disponibles</button>
+                </div>
+                <div id="usedListsGrid" class="used-lists-grid"></div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
