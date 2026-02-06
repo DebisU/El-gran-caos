@@ -637,15 +637,14 @@ function handleWheelClick(canvas, compositions, event) {
     // Solo procesar clics dentro del círculo (excluyendo el centro)
     if (distance < 30 || distance > radius) return;
     
-    // Calcular ángulo del clic
+    // Calcular ángulo del clic (atan2 devuelve ángulo desde el eje X positivo)
     let angle = Math.atan2(dy, dx);
+    
+    // Normalizar a rango [0, 2π]
     if (angle < 0) angle += 2 * Math.PI;
     
-    // Convertir el ángulo para que coincida con la orientación de la ruleta
-    // La ruleta empieza en la parte superior (90 grados)
-    angle = (angle - Math.PI / 2 + 2 * Math.PI) % (2 * Math.PI);
-    
     // Calcular en qué sector se hizo clic
+    // Los sectores empiezan en ángulo 0 (derecha) y van en sentido horario
     const anglePerItem = (2 * Math.PI) / compositions.length;
     const clickedIndex = Math.floor(angle / anglePerItem) % compositions.length;
     const clickedComposition = compositions[clickedIndex];
